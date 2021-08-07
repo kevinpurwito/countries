@@ -14,7 +14,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     public function getPackageProviders($app)
     {
         return [
-            CountryServiceProvider::class
+            CountryServiceProvider::class,
         ];
     }
 
@@ -24,5 +24,4 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         (new \CreateCountriesTable())->up();
     }
-
 }
