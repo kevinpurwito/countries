@@ -1,12 +1,12 @@
 # About Laravel Country
 
-[![Tests](https://github.com/kevinpurwito/countries/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/kevinpurwito/countries/actions/workflows/run-tests.yml)
-[![Code Style](https://github.com/kevinpurwito/countries/actions/workflows/php-cs-fixer.yml/badge.svg?branch=main)](https://github.com/kevinpurwito/countries/actions/workflows/php-cs-fixer.yml)
-[![Psalm](https://github.com/kevinpurwito/countries/actions/workflows/psalm.yml/badge.svg?branch=main)](https://github.com/kevinpurwito/countries/actions/workflows/psalm.yml)
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/kevinpurwito/countries.svg?style=flat-square)](https://packagist.org/packages/kevinpurwito/countries)
-[![Total Downloads](https://img.shields.io/packagist/dt/kevinpurwito/countries.svg?style=flat-square)](https://packagist.org/packages/kevinpurwito/countries)
+[![Tests](https://github.com/kevinpurwito/laravel-country/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/kevinpurwito/laravel-country/actions/workflows/run-tests.yml)
+[![Code Style](https://github.com/kevinpurwito/laravel-country/actions/workflows/php-cs-fixer.yml/badge.svg?branch=main)](https://github.com/kevinpurwito/laravel-country/actions/workflows/php-cs-fixer.yml)
+[![Psalm](https://github.com/kevinpurwito/laravel-country/actions/workflows/psalm.yml/badge.svg?branch=main)](https://github.com/kevinpurwito/laravel-country/actions/workflows/psalm.yml)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/kevinpurwito/laravel-country.svg?style=flat-square)](https://packagist.org/packages/kevinpurwito/laravel-country)
+[![Total Downloads](https://img.shields.io/packagist/dt/kevinpurwito/laravel-country.svg?style=flat-square)](https://packagist.org/packages/kevinpurwito/laravel-country)
 
-Laravel Country is a package containing country list migration, seed and models for Laravel
+Laravel Country is a package containing country list migration, seeders and model for Laravel
 
 ## Installation
 

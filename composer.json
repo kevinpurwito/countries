@@ -1,6 +1,6 @@
 {
     "name": "kevinpurwito/laravel-country",
-    "description": "Country list migration, seed and model for Laravel",
+    "description": "Country list migration, seeders and model for Laravel",
     "keywords": [
         "kevinpurwito",
         "countries",
@@ -17,8 +17,7 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/support": "^8.0"
+        "php": "^7.4|^8.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
@@ -49,9 +48,6 @@
         "test:coverage-clover": [
             "@putenv XDEBUG_MODE=coverage",
             "phpunit --color=always --coverage-clover coverage/clover.xml"
-        ],
-        "post-autoload-dump": [
-            "@php ./vendor/bin/testbench package:discover --ansi"
         ]
     },
     "config": {
