@@ -58,7 +58,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CountryServiceProvider"
+                "Kevinpurwito\\LaravelCountry\\CountryServiceProvider"
             ]
         }
     }
