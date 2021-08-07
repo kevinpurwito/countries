@@ -2,8 +2,6 @@
 
 namespace Kevinpurwito\LaravelCountry;
 
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Kevinpurwito\LaravelCountry\Models\Country;
 
@@ -37,19 +35,19 @@ class CountryServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/kp_country.php' => config_path('kp_country.php'),
-        ], 'config');
+        ], 'laravel-country-config');
 
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_countries_tables.php' => $this->getMigrationFileName('create_countries_tables.php'),
-        ], 'migrations');
+            __DIR__ . '/../database/migrations/create_countries_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_countries_table.php'),
+        ], 'laravel-country');
 
         $this->publishes([
             __DIR__ . '/../database/seeders/CountrySeeder.php' => database_path('seeders/CountrySeeder.php'),
-        ], 'seeders');
+        ], 'laravel-country');
 
         $this->publishes([
             __DIR__ . '/Models/Country.php' => app_path('Models/Country.php'),
-        ], 'models');
+        ], 'laravel-country-models');
     }
 
     protected function registerModelBindings()
@@ -61,24 +59,5 @@ class CountryServiceProvider extends ServiceProvider
         }
 
         $this->app->bind(Country::class, $config['country']);
-    }
-
-    /**
-     * Returns existing migration file if found, else uses the current timestamp.
-     *
-     * @param string $migrationFileName
-     * @return string
-     */
-    protected function getMigrationFileName(string $migrationFileName): string
-    {
-        $timestamp = date('Y_m_d_His');
-
-        $filesystem = $this->app->make(Filesystem::class);
-
-        return Collection::make(
-            $this->app->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR
-        )->flatMap(function ($path) use ($filesystem, $migrationFileName) {
-            return $filesystem->glob($path . ' * _' . $migrationFileName);
-        })->push($this->app->databasePath() . "/migrations/{$timestamp}_{$migrationFileName}")->first();
     }
 }
