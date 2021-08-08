@@ -6,7 +6,9 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/kevinpurwito/laravel-country.svg?style=flat-square)](https://packagist.org/packages/kevinpurwito/laravel-country)
 [![Total Downloads](https://img.shields.io/packagist/dt/kevinpurwito/laravel-country.svg?style=flat-square)](https://packagist.org/packages/kevinpurwito/laravel-country)
 
-Laravel Country is a package containing country list migration, seeders and model for Laravel
+Laravel Country is a package containing country list migration, seeders and model for Laravel.
+
+The list of countries is populated from [https://countrycode.org/](https://countrycode.org/)
 
 ## Installation
 
@@ -25,14 +27,16 @@ Published Config File Contents
 
 ```php
 [
-    'models' => [
-        'country' => Kevinpurwito\LaravelCountry\Models\Country::class,
+    'table_names' => [
+        'country' => env('KP_COUNTRY_TABLE_NAME', 'countries'),
+
+        'province' => env('KP_COUNTRY_TABLE_NAME_PROVINCE', 'provinces'),
+
+        'city' => env('KP_COUNTRY_TABLE_NAME_CITY', 'cities'),
     ],
-    
-    'table_name' => env('KP_COUNTRY_TABLE_NAME', 'countries'),
-    
+
     'popular_column' => env('KP_COUNTRY_POPULAR_COLUMN', true),
-    
+
     'order_no_column' => env('KP_COUNTRY_ORDER_NO_COLUMN', true),
 ];
 ```
@@ -41,6 +45,8 @@ Alternatively you can ignore the above publish command and add this following va
 
 ```text
 KP_COUNTRY_TABLE_NAME=countries
+KP_COUNTRY_TABLE_NAME_PROVINCE=provinces
+KP_COUNTRY_TABLE_NAME_CITY=cities
 KP_COUNTRY_POPULAR_COLUMN=true
 KP_COUNTRY_ORDER_NO_COLUMN=true
 ```
@@ -51,17 +57,89 @@ If you're using Laravel 5.5+ you don't need to manually add the service provider
 Auto-Discovered. For all versions of Laravel below 5.5, you must manually add the ServiceProvider & Facade to the
 appropriate arrays within your Laravel project `config/app.php`
 
-#### Provider
+### Provider
 
 ```php
-Kevinpurwito\LaravelCountry\CountryServiceProvider::class,
+[
+    Kevinpurwito\LaravelCountry\CountryServiceProvider::class,
+];
+```
+
+## Running the migration
+
+The only thing that you need to publish is the migration, you shouldn't need to publish the others, such as seeders and
+config; unless you want to customize them
+
+Countries only migration
+
+```bash
+php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-countries
+php artisan migrate
+```
+
+All migrations (countries, provinces, cities)
+
+```bash
+php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-migrations
+php artisan migrate
+```
+
+## Running the seeders
+
+Countries seeder
+
+```bash
+php artisan db:seed --class=KevinPurwito\LaravelCountry\Database\Seeders\CountrySeeder
+```
+
+Indonesia's provinces and cities seeder
+
+```bash
+php artisan db:seed --class=KevinPurwito\LaravelCountry\Database\Seeders\IndonesiaSeeder
 ```
 
 ## Usage
 
-```bash
-php artisan migrate
-php artisan seed --class=CountrySeeder
+Country class
+
+```php
+use Kevinpurwito\LaravelCountry\Models\Country;
+
+// Get a country by name, iso2 or iso3
+$country = Country::findByName('Indonesia');
+$country = Country::findByIso2('ID');
+$country = Country::findByIso3('IDN');
+
+// mark a country as popular
+$country->setPopular(true);
+
+// set `order_no` of the country
+$country->setOrderNo(1);
+
+// get list of countries by default ordering (`popular` first, after that by `order_no` and finally by `name`)
+$countries = Country::default()->get();
+
+// get list of provinces in a country
+$provinces = $country->provinces()->default()->get();
+
+// get list of cities in a province
+$cities = $provinces[0]->cities()->default()->get();
+```
+
+### Adding relationship to your own model
+
+```php
+use Kevinpurwito\LaravelCountry\Relationships\BelongsToCountry;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model 
+{
+    use BelongsToCountry;
+    
+    // now you can use `country` relationship to your user model, given that your table has 'country_id' column
+    // e.g. $user->country->iso2; returns 'ID' if your user belongs to 'Indonesia' country
+}
+
 ```
 
 ### Testing

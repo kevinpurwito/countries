@@ -6,9 +6,14 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCountriesTable extends Migration
 {
+    protected function getTable()
+    {
+        return config('kp_country.table_names.country', 'countries');
+    }
+
     public function up()
     {
-        $tableName = config('kp_country.table_name', 'countries');
+        $tableName = $this->getTable();
 
         if (! Schema::hasTable($tableName)) {
             Schema::create($tableName, function (Blueprint $table) {
@@ -25,7 +30,7 @@ class CreateCountriesTable extends Migration
 
                 if (config('kp_country.order_no_column', true)) {
                     // additional column to enable you to set which countries shown first
-                    $table->unsignedSmallInteger('order_no')->default(9999);
+                    $table->unsignedSmallInteger('order_no')->default(999);
                 }
 
                 $table->timestamps();
@@ -35,6 +40,6 @@ class CreateCountriesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists(config('kp_country.table_name', 'countries'));
+        Schema::dropIfExists($this->getTable());
     }
 }

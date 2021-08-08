@@ -3,7 +3,12 @@
 namespace Kevinpurwito\LaravelCountry;
 
 use Illuminate\Support\ServiceProvider;
+use Kevinpurwito\LaravelCountry\Contracts\CityContract;
+use Kevinpurwito\LaravelCountry\Contracts\CountryContract;
+use Kevinpurwito\LaravelCountry\Contracts\ProvinceContract;
+use Kevinpurwito\LaravelCountry\Models\City;
 use Kevinpurwito\LaravelCountry\Models\Country;
+use Kevinpurwito\LaravelCountry\Models\Province;
 
 class CountryServiceProvider extends ServiceProvider
 {
@@ -35,29 +40,33 @@ class CountryServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../config/kp_country.php' => config_path('kp_country.php'),
-        ], 'laravel-country-config');
+        ], 'lc-config');
 
         $this->publishes([
             __DIR__ . '/../database/migrations/create_countries_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_countries_table.php'),
-        ], 'laravel-country');
+        ], ['lc-migrations', 'lc-countries']);
+
+        $this->publishes([
+            __DIR__ . '/../database/migrations/create_provinces_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_provinces_table.php'),
+        ], ['lc-migrations', 'lc-provinces']);
+
+        $this->publishes([
+            __DIR__ . '/../database/migrations/create_cities_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_cities_table.php'),
+        ], ['lc-migrations', 'lc-cities']);
 
         $this->publishes([
             __DIR__ . '/../database/seeders/CountrySeeder.php' => database_path('seeders/CountrySeeder.php'),
-        ], 'laravel-country');
+        ], 'lc-seeders');
 
         $this->publishes([
-            __DIR__ . '/Models/Country.php' => app_path('Models/Country.php'),
-        ], 'laravel-country-models');
+            __DIR__ . '/../database/seeders/IndonesiaSeeder.php' => database_path('seeders/IndonesiaSeeder.php'),
+        ], 'lc-seeders');
     }
 
     protected function registerModelBindings()
     {
-        $config = $this->app->config['kp_country . models'];
-
-        if (! $config) {
-            return;
-        }
-
-        $this->app->bind(Country::class, $config['country']);
+        $this->app->bind(CountryContract::class, Country::class);
+        $this->app->bind(ProvinceContract::class, Province::class);
+        $this->app->bind(CityContract::class, City::class);
     }
 }

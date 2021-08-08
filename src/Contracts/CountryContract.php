@@ -9,4 +9,10 @@ interface CountryContract
     public static function findByIso2(string $iso2): self;
 
     public static function findByIso3(string $iso3): self;
+
+    public function setPopular(bool $isPopular);
+
+    public function setOrderNo(int $orderNo);
+
+    public function createProvince($code, $name);
 }

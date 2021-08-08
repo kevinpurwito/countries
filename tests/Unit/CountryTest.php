@@ -50,7 +50,7 @@ class CountryTest extends TestCase
     {
         if (config('kp_country.order_no_column')) {
             $country = Country::findByName('Indonesia');
-            $this->assertTrue($country->order_no == 9999);
+            $this->assertTrue($country->order_no == 999);
             $country->order_no = 1;
             $this->assertTrue($country->order_no == 1);
         }

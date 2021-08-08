@@ -4,16 +4,29 @@ namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kevinpurwito\LaravelCountry\Relationships\HasManyCities;
+use Kevinpurwito\LaravelCountry\Relationships\HasManyProvinces;
 
 class Country extends Model
 {
     use HasFactory;
+    use HasManyProvinces;
+    use HasManyCities;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function getTable()
     {
-        return config('kp_country.table_name', parent::getTable());
+        return config('kp_country.table_names.country', parent::getTable());
+    }
+
+    public function scopeDefault($query)
+    {
+        return $query->when(config('kp_country.popular_column'), function ($query) {
+            return $query->orderBy('popular', 'DESC');
+        })->when(config('kp_country.order_no_column'), function ($query) {
+            return $query->orderBy('order_no', 'ASC');
+        })->orderBy('name', 'ASC');
     }
 
     public static function findByName(string $name): self
@@ -31,13 +44,19 @@ class Country extends Model
         return self::whereIso3($iso3)->first();
     }
 
-    public function scopeDefault($query)
+    public function setPopular(bool $isPopular)
     {
-        return $query->when(config('kp_country.popular_column'), function ($query) {
-            return $query->orderBy('popular', 'DESC');
-        })->when(config('kp_country.order_no_column'), function ($query) {
-            return $query->orderBy('order_no', 'ASC');
-        })->orderBy('name', 'ASC');
+        $this->update(['popular' => $isPopular]);
+    }
+
+    public function setOrderNo(int $orderNo)
+    {
+        $this->update(['order_no' => $orderNo]);
+    }
+
+    public function createProvince($code, $name)
+    {
+        return Province::firstOrCreate(['code' => $code], ['country_id' => $this->id, 'name' => $name]);
     }
 
     protected static function newFactory()
