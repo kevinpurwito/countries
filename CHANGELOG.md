@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-country` will be documented in this file
 
+## 1.1.1 - 2021-08-09
+### Fixed
+- Migration filename to ensure the order of migration is correct (countries > provinces > cities)
+
 ## 1.1.0 - 2021-08-09
 ### Added
 - Provinces table

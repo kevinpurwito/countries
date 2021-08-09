@@ -74,14 +74,12 @@ Countries only migration
 
 ```bash
 php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-countries
-php artisan migrate
 ```
 
 All migrations (countries, provinces, cities)
 
 ```bash
 php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-migrations
-php artisan migrate
 ```
 
 ## Running the seeders
@@ -89,13 +87,13 @@ php artisan migrate
 Countries seeder
 
 ```bash
-php artisan db:seed --class=KevinPurwito\LaravelCountry\Database\Seeders\CountrySeeder
+php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\CountrySeeder
 ```
 
 Indonesia's provinces and cities seeder
 
 ```bash
-php artisan db:seed --class=KevinPurwito\LaravelCountry\Database\Seeders\IndonesiaSeeder
+php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IndonesiaSeeder
 ```
 
 ## Usage

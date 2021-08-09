@@ -43,15 +43,15 @@ class CountryServiceProvider extends ServiceProvider
         ], 'lc-config');
 
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_countries_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_countries_table.php'),
+            __DIR__ . '/../database/migrations/01_create_countries_table.php' => database_path('migrations/' . date('Y_m_d_Hi', time()) . '01_create_countries_table.php'),
         ], ['lc-migrations', 'lc-countries']);
 
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_provinces_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_provinces_table.php'),
+            __DIR__ . '/../database/migrations/02_create_provinces_table.php' => database_path('migrations/' . date('Y_m_d_Hi', time()) . '02_create_provinces_table.php'),
         ], ['lc-migrations', 'lc-provinces']);
 
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_cities_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_cities_table.php'),
+            __DIR__ . '/../database/migrations/03_create_cities_table.php' => database_path('migrations/' . date('Y_m_d_Hi', time()) . '03_create_cities_table.php'),
         ], ['lc-migrations', 'lc-cities']);
 
         $this->publishes([

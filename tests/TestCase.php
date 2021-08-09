@@ -20,9 +20,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     public function getEnvironmentSetUp($app)
     {
-        include_once __DIR__ . '/../database/migrations/create_countries_table.php';
-        include_once __DIR__ . '/../database/migrations/create_provinces_table.php';
-        include_once __DIR__ . '/../database/migrations/create_cities_table.php';
+        include_once __DIR__ . '/../database/migrations/01_create_countries_table.php';
+        include_once __DIR__ . '/../database/migrations/02_create_provinces_table.php';
+        include_once __DIR__ . '/../database/migrations/03_create_cities_table.php';
 
         (new \CreateCountriesTable())->up();
         (new \CreateProvincesTable())->up();
