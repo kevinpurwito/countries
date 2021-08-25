@@ -5,13 +5,17 @@ namespace Kevinpurwito\LaravelCountry\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyCities;
+use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyProvinces;
+use Kevinpurwito\LaravelCountry\Relationships\HasManyWards;
 
 class Country extends Model
 {
     use HasFactory;
     use HasManyProvinces;
     use HasManyCities;
+    use HasManyDistricts;
+    use HasManyWards;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
@@ -23,10 +27,10 @@ class Country extends Model
     public function scopeDefault($query)
     {
         return $query->when(config('kp_country.popular_column'), function ($query) {
-            return $query->orderBy('popular', 'DESC');
-        })->when(config('kp_country.order_no_column'), function ($query) {
-            return $query->orderBy('order_no', 'ASC');
-        })->orderBy('name', 'ASC');
+            return $query->orderByDesc('popular');
+        })->when(config('kp_country.ordinal_column'), function ($query) {
+            return $query->orderBy('ordinal');
+        })->orderBy('name');
     }
 
     public static function findByName(string $name): self
@@ -49,9 +53,9 @@ class Country extends Model
         $this->update(['popular' => $isPopular]);
     }
 
-    public function setOrderNo(int $orderNo)
+    public function setOrdinal(int $ordinal)
     {
-        $this->update(['order_no' => $orderNo]);
+        $this->update(['ordinal' => $ordinal]);
     }
 
     public function createProvince($code, $name)

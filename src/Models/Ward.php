@@ -3,23 +3,23 @@
 namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kevinpurwito\LaravelCountry\Relationships\BelongsToCity;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToCountry;
+use Kevinpurwito\LaravelCountry\Relationships\BelongsToDistrict;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToProvince;
-use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
-use Kevinpurwito\LaravelCountry\Relationships\HasManyWards;
 
-class City extends Model
+class Ward extends Model
 {
     use BelongsToCountry;
     use BelongsToProvince;
-    use HasManyDistricts;
-    use HasManyWards;
+    use BelongsToCity;
+    use BelongsToDistrict;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function getTable()
     {
-        return config('kp_country.table_names.city', parent::getTable());
+        return config('kp_country.table_names.ward', parent::getTable());
     }
 
     public function scopeDefault($query)

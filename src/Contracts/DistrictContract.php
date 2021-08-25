@@ -2,7 +2,7 @@
 
 namespace Kevinpurwito\LaravelCountry\Contracts;
 
-interface CityContract
+interface DistrictContract
 {
     public function setOrdinal(int $ordinal);
 }

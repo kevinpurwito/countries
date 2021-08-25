@@ -12,7 +12,7 @@ interface CountryContract
 
     public function setPopular(bool $isPopular);
 
-    public function setOrderNo(int $orderNo);
+    public function setOrdinal(int $ordinal);
 
     public function createProvince($code, $name);
 }

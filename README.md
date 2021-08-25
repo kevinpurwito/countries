@@ -33,11 +33,15 @@ Published Config File Contents
         'province' => env('KP_COUNTRY_TABLE_NAME_PROVINCE', 'provinces'),
 
         'city' => env('KP_COUNTRY_TABLE_NAME_CITY', 'cities'),
+
+        'district' => env('KP_COUNTRY_TABLE_NAME_DISTRICT', 'districts'),
+
+        'ward' => env('KP_COUNTRY_TABLE_NAME_WARD', 'wards'),
     ],
 
     'popular_column' => env('KP_COUNTRY_POPULAR_COLUMN', true),
 
-    'order_no_column' => env('KP_COUNTRY_ORDER_NO_COLUMN', true),
+    'ordinal_column' => env('KP_COUNTRY_ORDINAL_COLUMN', true),
 ];
 ```
 
@@ -47,8 +51,10 @@ Alternatively you can ignore the above publish command and add this following va
 KP_COUNTRY_TABLE_NAME=countries
 KP_COUNTRY_TABLE_NAME_PROVINCE=provinces
 KP_COUNTRY_TABLE_NAME_CITY=cities
+KP_COUNTRY_TABLE_NAME_DISTRICT=districts
+KP_COUNTRY_TABLE_NAME_WARD=wards
 KP_COUNTRY_POPULAR_COLUMN=true
-KP_COUNTRY_ORDER_NO_COLUMN=true
+KP_COUNTRY_ORDINAL_COLUMN=true
 ```
 
 ## Auto Discovery
@@ -76,7 +82,7 @@ Countries only migration
 php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-countries
 ```
 
-All migrations (countries, provinces, cities)
+All migrations (countries, provinces, cities, districts, wards)
 
 ```bash
 php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-migrations
@@ -90,11 +96,16 @@ Countries seeder
 php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\CountrySeeder
 ```
 
+> countries `code` are from [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166)
+
 Indonesia's provinces and cities seeder
 
 ```bash
 php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IndonesiaSeeder
 ```
+
+> Indonesian provinces `code` are from [ISO 3166-2:ID](https://en.wikipedia.org/wiki/ISO_3166-2:ID)
+> Indonesian cities, districts and wards `code` are from [Kemendagri](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
 
 ## Usage
 
@@ -111,10 +122,10 @@ $country = Country::findByIso3('IDN');
 // mark a country as popular
 $country->setPopular(true);
 
-// set `order_no` of the country
-$country->setOrderNo(1);
+// set `ordinal` of the country
+$country->setOrdinal(1);
 
-// get list of countries by default ordering (`popular` first, after that by `order_no` and finally by `name`)
+// get list of countries by default ordering (`popular` first, after that by `orinal` and finally by `name`)
 $countries = Country::default()->get();
 
 // get list of provinces in a country

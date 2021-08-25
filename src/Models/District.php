@@ -3,24 +3,23 @@
 namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Schema;
+use Kevinpurwito\LaravelCountry\Relationships\BelongsToCity;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToCountry;
-use Kevinpurwito\LaravelCountry\Relationships\HasManyCities;
-use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
+use Kevinpurwito\LaravelCountry\Relationships\BelongsToProvince;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyWards;
 
-class Province extends Model
+class District extends Model
 {
     use BelongsToCountry;
-    use HasManyCities;
-    use HasManyDistricts;
+    use BelongsToProvince;
+    use BelongsToCity;
     use HasManyWards;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function getTable()
     {
-        return config('kp_country.table_names.province', parent::getTable());
+        return config('kp_country.table_names.district', parent::getTable());
     }
 
     public function scopeDefault($query)
@@ -33,14 +32,5 @@ class Province extends Model
     public function setOrdinal(int $ordinal)
     {
         $this->update(['ordinal' => $ordinal]);
-    }
-
-    public function createCity($code, $name)
-    {
-        if (! Schema::hasTable($this->getTable())) {
-            return null;
-        }
-
-        return City::firstOrCreate(['code' => $code], ['country_id' => $this->country_id, 'province_id' => $this->id, 'name' => $name]);
     }
 }

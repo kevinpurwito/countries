@@ -46,13 +46,13 @@ class CountryTest extends TestCase
     }
 
     /** @test */
-    public function it_has_order_no_column()
+    public function it_has_ordinal_column()
     {
-        if (config('kp_country.order_no_column')) {
+        if (config('kp_country.ordinal_column')) {
             $country = Country::findByName('Indonesia');
-            $this->assertTrue($country->order_no == 999);
-            $country->order_no = 1;
-            $this->assertTrue($country->order_no == 1);
+            $this->assertTrue($country->ordinal == 999);
+            $country->ordinal = 1;
+            $this->assertTrue($country->ordinal == 1);
         }
     }
 
@@ -69,11 +69,11 @@ class CountryTest extends TestCase
     }
 
     /** @test */
-    public function it_shows_by_order_no_column()
+    public function it_shows_by_ordinal_column()
     {
-        if (config('kp_country.order_no_column')) {
-            Country::whereName('Indonesia')->update(['order_no' => 1]);
-            Country::whereName('Canada')->update(['order_no' => 2]);
+        if (config('kp_country.ordinal_column')) {
+            Country::whereName('Indonesia')->update(['ordinal' => 1]);
+            Country::whereName('Canada')->update(['ordinal' => 2]);
             $countries = Country::default()->limit(2)->get();
             $this->assertTrue($countries[0]->name == 'Indonesia');
             $this->assertTrue($countries[1]->name == 'Canada');

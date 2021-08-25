@@ -22,9 +22,9 @@ class CreateProvincesTable extends Migration
                 $table->string('code', 10)->unique();
                 $table->string('name')->index();
 
-                if (config('kp_country.order_no_column', true)) {
+                if (config('kp_country.ordinal_column', true)) {
                     // additional column to enable you to set which provinces shown first
-                    $table->unsignedSmallInteger('order_no')->default(999);
+                    $table->unsignedSmallInteger('ordinal')->default(999);
                 }
 
                 $table->timestamps();
