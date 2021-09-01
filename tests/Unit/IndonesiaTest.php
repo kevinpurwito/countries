@@ -85,5 +85,4 @@ class IndonesiaTest extends TestCase
         $this->assertTrue($district->country instanceof Country);
         $this->assertTrue($district->province instanceof Province);
     }
-
 }

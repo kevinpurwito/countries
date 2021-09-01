@@ -43,7 +43,7 @@ class City extends Model
 
         return District::firstOrCreate(['code' => $code], [
             'country_id' => $this->country_id, 'province_id' => $this->province_id,
-            'city_id' => $this->id, 'name' => $name
+            'city_id' => $this->id, 'name' => $name,
         ]);
     }
 }
