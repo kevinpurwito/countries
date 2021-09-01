@@ -103,6 +103,7 @@ Indonesia's provinces, cities and districts seeder
 ```bash
 php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IdProvincesSeeder
 php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IdCitiesSeeder
+php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IdDistrictsSeeder
 ```
 
 > Indonesian provinces `iso2` are from [ISO 3166-2:ID](https://en.wikipedia.org/wiki/ISO_3166-2:ID)
