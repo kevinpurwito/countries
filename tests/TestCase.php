@@ -23,9 +23,13 @@ class TestCase extends \Orchestra\Testbench\TestCase
         include_once __DIR__ . '/../database/migrations/01_create_countries_table.php';
         include_once __DIR__ . '/../database/migrations/02_create_provinces_table.php';
         include_once __DIR__ . '/../database/migrations/03_create_cities_table.php';
+        include_once __DIR__ . '/../database/migrations/04_create_districts_table.php';
+        include_once __DIR__ . '/../database/migrations/05_create_wards_table.php';
 
         (new \CreateCountriesTable())->up();
         (new \CreateProvincesTable())->up();
         (new \CreateCitiesTable())->up();
+        (new \CreateDistrictsTable())->up();
+        (new \CreateWardsTable())->up();
     }
 }

@@ -3,12 +3,13 @@
 All notable changes to `laravel-country` will be documented in this file
 
 ## TODO
-- Districts & wards seeders from [wikipedia](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
+- Wards seeder from [wikipedia](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
 
 
-## 2.0.0 - 2021-08-09
+## 2.0.0 - 2021-09-01
 ### Added
-- Districts and wards for Indonesia
+- Districts seeder for Indonesia
+- Districts and wards migration for Indonesia
 
 ### Changed
 - `order_no` column into `ordinal` column

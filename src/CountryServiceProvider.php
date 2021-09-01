@@ -70,12 +70,20 @@ class CountryServiceProvider extends ServiceProvider
 
         // seeders
         $this->publishes([
-            __DIR__ . '/../database/seeders/CountrySeeder.php' => database_path('seeders/CountrySeeder.php'),
-        ], 'lc-seeders');
+            __DIR__ . '/../database/seeders/CountriesSeeder.php' => database_path('seeders/CountrySeeder.php'),
+        ], ['lc-seeders', 'lc-countries']);
 
         $this->publishes([
-            __DIR__ . '/../database/seeders/IndonesiaSeeder.php' => database_path('seeders/IndonesiaSeeder.php'),
-        ], 'lc-seeders');
+            __DIR__ . '/../database/seeders/IdProvincesSeeder.php' => database_path('seeders/IdProvincesSeeder.php'),
+        ], ['lc-seeders', 'lc-id-provinces']);
+
+        $this->publishes([
+            __DIR__ . '/../database/seeders/IdCitiesSeeder.php' => database_path('seeders/IdCitiesSeeder.php'),
+        ], ['lc-seeders', 'lc-id-cities']);
+
+        $this->publishes([
+            __DIR__ . '/../database/seeders/IdDistrictsSeeder.php' => database_path('seeders/IdDistrictsSeeder.php'),
+        ], ['lc-seeders', 'lc-id-districts']);
     }
 
     protected function registerModelBindings()

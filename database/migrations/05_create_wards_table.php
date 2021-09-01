@@ -23,7 +23,7 @@ class CreateWardsTable extends Migration
                 $table->foreignId('city_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->foreignId('district_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->string('code', 20)->index()->nullable();
-                $table->string('name')->index();
+                $table->string('name');
 
                 if (config('kp_country.ordinal_column', true)) {
                     // additional column to enable you to set which wards shown first

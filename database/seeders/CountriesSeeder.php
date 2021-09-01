@@ -5,7 +5,7 @@ namespace Kevinpurwito\LaravelCountry\Database\Seeders;
 use Illuminate\Database\Seeder;
 use Kevinpurwito\LaravelCountry\Models\Country;
 
-class CountrySeeder extends Seeder
+class CountriesSeeder extends Seeder
 {
     public function run()
     {

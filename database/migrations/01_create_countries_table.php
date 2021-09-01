@@ -18,10 +18,10 @@ class CreateCountriesTable extends Migration
         if (! Schema::hasTable($tableName)) {
             Schema::create($tableName, function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('name')->unique();
                 $table->string('code', 3)->index(); // phone code, e.g. 62 for Indonesia
                 $table->string('iso2', 2)->unique(); // ISO2 code, e.g. ID for Indonesia
                 $table->string('iso3', 3)->unique(); // ISO3 code, e.g. IDN for Indonesia
+                $table->string('name')->unique();
 
                 if (config('kp_country.popular_column', true)) {
                     // additional column to enable you to load and show popular countries first

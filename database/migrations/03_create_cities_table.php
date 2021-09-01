@@ -20,8 +20,8 @@ class CreateCitiesTable extends Migration
                 $table->bigIncrements('id');
                 $table->foreignId('country_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->foreignId('province_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
-                $table->string('code', 20)->index()->nullable();
-                $table->string('name')->index();
+                $table->string('code', 5)->index()->nullable();
+                $table->string('name');
 
                 if (config('kp_country.ordinal_column', true)) {
                     // additional column to enable you to set which cities shown first

@@ -58,9 +58,9 @@ class Country extends Model
         $this->update(['ordinal' => $ordinal]);
     }
 
-    public function createProvince($code, $name)
+    public function createProvince($iso2, $name, $code = null)
     {
-        return Province::firstOrCreate(['code' => $code], ['country_id' => $this->id, 'name' => $name]);
+        return Province::firstOrCreate(['iso2' => $iso2], ['country_id' => $this->id, 'name' => $name, 'code' => $code ?? $iso2]);
     }
 
     protected static function newFactory()

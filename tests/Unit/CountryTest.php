@@ -3,7 +3,7 @@
 namespace Kevinpurwito\LaravelCountry\Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Kevinpurwito\LaravelCountry\Database\Seeders\CountrySeeder;
+use Kevinpurwito\LaravelCountry\Database\Seeders\CountriesSeeder;
 use Kevinpurwito\LaravelCountry\Models\Country;
 use Kevinpurwito\LaravelCountry\Tests\TestCase;
 
@@ -14,7 +14,7 @@ class CountryTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        (new CountrySeeder)->run();
+        (new CountriesSeeder)->run();
     }
 
     /** @test */

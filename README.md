@@ -98,14 +98,16 @@ php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\Country
 
 > countries `code` are from [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166)
 
-Indonesia's provinces and cities seeder
+Indonesia's provinces, cities and districts seeder
 
 ```bash
-php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IndonesiaSeeder
+php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IdProvincesSeeder
+php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IdCitiesSeeder
 ```
 
-> Indonesian provinces `code` are from [ISO 3166-2:ID](https://en.wikipedia.org/wiki/ISO_3166-2:ID)
-> Indonesian cities, districts and wards `code` are from [Kemendagri](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
+> Indonesian provinces `iso2` are from [ISO 3166-2:ID](https://en.wikipedia.org/wiki/ISO_3166-2:ID)
+
+> Indonesian provinces, cities and districts `code` are from [Kemendagri](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
 
 ## Usage
 

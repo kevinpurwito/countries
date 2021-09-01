@@ -19,8 +19,9 @@ class CreateProvincesTable extends Migration
             Schema::create($tableName, function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->foreignId('country_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
-                $table->string('code', 10)->unique();
-                $table->string('name')->index();
+                $table->string('code', 5)->index()->nullable(); // Kode Kemendagri, ex: 31 for Jakarta
+                $table->string('iso2', 5)->unique(); // ISO 3166-2:ID code, ex: ID-JK for Jakarta
+                $table->string('name');
 
                 if (config('kp_country.ordinal_column', true)) {
                     // additional column to enable you to set which provinces shown first

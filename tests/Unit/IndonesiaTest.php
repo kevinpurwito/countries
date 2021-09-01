@@ -2,23 +2,24 @@
 
 namespace Kevinpurwito\LaravelCountry\Tests\Unit;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Kevinpurwito\LaravelCountry\Database\Seeders\CountrySeeder;
-use Kevinpurwito\LaravelCountry\Database\Seeders\IndonesiaSeeder;
+use Kevinpurwito\LaravelCountry\Database\Seeders\CountriesSeeder;
+use Kevinpurwito\LaravelCountry\Database\Seeders\IdCitiesSeeder;
+use Kevinpurwito\LaravelCountry\Database\Seeders\IdDistrictsSeeder;
+use Kevinpurwito\LaravelCountry\Database\Seeders\IdProvincesSeeder;
 use Kevinpurwito\LaravelCountry\Models\City;
 use Kevinpurwito\LaravelCountry\Models\Country;
+use Kevinpurwito\LaravelCountry\Models\District;
 use Kevinpurwito\LaravelCountry\Models\Province;
 use Kevinpurwito\LaravelCountry\Tests\TestCase;
 
 class IndonesiaTest extends TestCase
 {
-    use RefreshDatabase;
-
     public function setUp(): void
     {
         parent::setUp();
-        (new CountrySeeder())->run();
-        (new IndonesiaSeeder())->run();
+        (new CountriesSeeder())->run();
+        (new IdProvincesSeeder())->run();
+        (new IdCitiesSeeder())->run();
     }
 
     /** @test */
@@ -62,4 +63,27 @@ class IndonesiaTest extends TestCase
         $city = City::first();
         $this->assertTrue($city->province instanceof Province);
     }
+
+    /** @test */
+    public function it_has_districts()
+    {
+        (new IdDistrictsSeeder())->run();
+
+        $country = Country::findByIso3('IDN'); // Indonesia
+        $districtCount = $country->districts()->count();
+        $this->assertTrue($districtCount == 7241);
+
+        $district = $country->districts()->first();
+        $this->assertTrue($district instanceof District);
+
+        $district = $country->provinces()->first()->districts()->first();
+        $this->assertTrue($district instanceof District);
+
+        $district = $country->cities()->first()->districts()->first();
+        $this->assertTrue($district instanceof District);
+
+        $this->assertTrue($district->country instanceof Country);
+        $this->assertTrue($district->province instanceof Province);
+    }
+
 }

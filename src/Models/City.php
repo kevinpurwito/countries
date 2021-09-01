@@ -3,6 +3,7 @@
 namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Schema;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToCountry;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToProvince;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
@@ -32,5 +33,17 @@ class City extends Model
     public function setOrdinal(int $ordinal)
     {
         $this->update(['ordinal' => $ordinal]);
+    }
+
+    public function createDistrict($code, $name)
+    {
+        if (! Schema::hasTable($this->getTable())) {
+            return null;
+        }
+
+        return District::firstOrCreate(['code' => $code], [
+            'country_id' => $this->country_id, 'province_id' => $this->province_id,
+            'city_id' => $this->id, 'name' => $name
+        ]);
     }
 }

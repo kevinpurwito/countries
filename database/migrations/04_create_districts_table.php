@@ -21,8 +21,8 @@ class CreateDistrictsTable extends Migration
                 $table->foreignId('country_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->foreignId('province_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
                 $table->foreignId('city_id')->constrained()->onUpdate('CASCADE')->onDelete('CASCADE');
-                $table->string('code', 20)->index()->nullable();
-                $table->string('name')->index();
+                $table->string('code', 8)->index()->nullable();
+                $table->string('name');
 
                 if (config('kp_country.ordinal_column', true)) {
                     // additional column to enable you to set which districts shown first
