@@ -93,7 +93,7 @@ php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryService
 Countries seeder
 
 ```bash
-php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\CountrySeeder
+php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\CountriesSeeder
 ```
 
 > countries `code` are from [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166)
