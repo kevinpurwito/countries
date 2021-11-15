@@ -79,13 +79,13 @@ config; unless you want to customize them
 Countries only migration
 
 ```bash
-php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-countries
+php artisan vendor:publish --provider=Kevinpurwito\\LaravelCountry\\CountryServiceProvider --tag=lc-countries
 ```
 
 All migrations (countries, provinces, cities, districts, wards)
 
 ```bash
-php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryServiceProvider --tag=lc-migrations
+php artisan vendor:publish --provider=Kevinpurwito\\LaravelCountry\\CountryServiceProvider --tag=lc-migrations
 ```
 
 ## Running the seeders
@@ -93,7 +93,7 @@ php artisan vendor:publish --provider=Kevinpurwito\LaravelCountry\CountryService
 Countries seeder
 
 ```bash
-php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\CountrySeeder
+php artisan db:seed --class=Kevinpurwito\\LaravelCountry\\Database\\Seeders\\CountriesSeeder
 ```
 
 > countries `code` are from [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166)
@@ -101,8 +101,9 @@ php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\Country
 Indonesia's provinces, cities and districts seeder
 
 ```bash
-php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IdProvincesSeeder
-php artisan db:seed --class=Kevinpurwito\LaravelCountry\Database\Seeders\IdCitiesSeeder
+php artisan db:seed --class=Kevinpurwito\\LaravelCountry\\Database\\Seeders\\IdProvincesSeeder
+php artisan db:seed --class=Kevinpurwito\\LaravelCountry\\Database\\Seeders\\IdCitiesSeeder
+php artisan db:seed --class=Kevinpurwito\\LaravelCountry\\Database\\Seeders\\IdDistrictsSeeder
 ```
 
 > Indonesian provinces `iso2` are from [ISO 3166-2:ID](https://en.wikipedia.org/wiki/ISO_3166-2:ID)
@@ -127,7 +128,7 @@ $country->setPopular(true);
 // set `ordinal` of the country
 $country->setOrdinal(1);
 
-// get list of countries by default ordering (`popular` first, after that by `orinal` and finally by `name`)
+// get list of countries by default ordering (`popular` first, after that by `ordinal` and finally by `name`)
 $countries = Country::default()->get();
 
 // get list of provinces in a country
