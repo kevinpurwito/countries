@@ -8,7 +8,14 @@ All notable changes to `laravel-country` will be documented in this file
 ## 2.0.1 - 2021-11-15
 ### Fixed
 - Seeder: Province codes not matching the actual code
+- Seeder: Cities province_id not matching actual province_id
 
+### Update Guide
+- Run
+```bash
+php artisan db:seed --class=Kevinpurwito\\LaravelCountry\\Database\\Seeders\\IdProvincesSeeder
+php artisan db:seed --class=Kevinpurwito\\LaravelCountry\\Database\\Seeders\\IdCitiesSeeder
+```
 
 ## 2.0.0 - 2021-09-01
 ### Added

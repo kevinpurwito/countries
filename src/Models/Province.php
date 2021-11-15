@@ -41,6 +41,6 @@ class Province extends Model
             return null;
         }
 
-        return City::firstOrCreate(['code' => $code], ['country_id' => $this->country_id, 'province_id' => $this->id, 'name' => $name]);
+        return City::updateOrCreate(['code' => $code], ['country_id' => $this->country_id, 'province_id' => $this->id, 'name' => $name]);
     }
 }
