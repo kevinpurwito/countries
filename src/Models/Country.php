@@ -4,6 +4,7 @@ namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kevinpurwito\LaravelCountry\Database\Factories\CountryFactory;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyCities;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyProvinces;
@@ -60,11 +61,11 @@ class Country extends Model
 
     public function createProvince($iso2, $name, $code = null)
     {
-        return Province::firstOrCreate(['iso2' => $iso2], ['country_id' => $this->id, 'name' => $name, 'code' => $code ?? $iso2]);
+        return Province::updateOrCreate(['iso2' => $iso2], ['country_id' => $this->id, 'name' => $name, 'code' => $code ?? $iso2]);
     }
 
     protected static function newFactory()
     {
-        return \Kevinpurwito\LaravelCountry\Database\Factories\CountryFactory::new();
+        return CountryFactory::new();
     }
 }

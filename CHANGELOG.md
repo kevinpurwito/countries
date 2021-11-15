@@ -5,6 +5,10 @@ All notable changes to `laravel-country` will be documented in this file
 ## TODO
 - Wards seeder from [wikipedia](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
 
+## 2.0.1 - 2021-11-15
+### Fixed
+- Seeder: Province codes not matching the actual code
+
 
 ## 2.0.0 - 2021-09-01
 ### Added
