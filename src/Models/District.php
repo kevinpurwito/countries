@@ -3,6 +3,7 @@
 namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToCity;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToCountry;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToProvince;
@@ -19,6 +20,10 @@ use Kevinpurwito\LaravelCountry\Relationships\HasManyWards;
  * @property int $ordinal
  * @property-read mixed $created_at
  * @property-read mixed $updated_at
+ * @property-read Country|null $country
+ * @property-read Province|null $province
+ * @property-read City|null $city
+ * @property-read Collection|Ward[]|null $wards
  */
 class District extends Model
 {

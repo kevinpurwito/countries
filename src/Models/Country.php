@@ -4,6 +4,7 @@ namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Kevinpurwito\LaravelCountry\Database\Factories\CountryFactory;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyCities;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
@@ -21,6 +22,10 @@ use Kevinpurwito\LaravelCountry\Relationships\HasManyWards;
  * @property int $ordinal
  * @property-read mixed $created_at
  * @property-read mixed $updated_at
+ * @property-read Collection|Province[]|null $provinces
+ * @property-read Collection|City[]|null $cities
+ * @property-read Collection|District[]|null $districts
+ * @property-read Collection|Ward[]|null $wards
  */
 class Country extends Model
 {

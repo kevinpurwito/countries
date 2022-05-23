@@ -7,7 +7,7 @@ All notable changes to `laravel-country` will be documented in this file
 
 ## 2.0.2 - 2022-05-23
 ### Added
-- PHPDoc for each Models
+- PHPDoc for each Models, including @property for each attributes & @property-read for each relationship
 
 
 ## 2.0.1 - 2021-11-15
