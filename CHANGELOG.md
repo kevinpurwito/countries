@@ -5,7 +5,7 @@ All notable changes to `laravel-country` will be documented in this file
 ## TODO
 - Wards seeder from [wikipedia](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
 
-## 2.0.1 - 2022-05-23
+## 2.0.2 - 2022-05-23
 ### Added
 - PHPDoc for each Models
 
