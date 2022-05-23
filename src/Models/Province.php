@@ -9,6 +9,17 @@ use Kevinpurwito\LaravelCountry\Relationships\HasManyCities;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyWards;
 
+/**
+ * Kevinpurwito\LaravelCountry\Models\Province
+ * @property-read int $id
+ * @property int $country_id
+ * @property ?string $code
+ * @property string $iso2
+ * @property string $name
+ * @property int $ordinal
+ * @property-read mixed $created_at
+ * @property-read mixed $updated_at
+ */
 class Province extends Model
 {
     use BelongsToCountry;

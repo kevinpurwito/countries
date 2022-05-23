@@ -10,6 +10,18 @@ use Kevinpurwito\LaravelCountry\Relationships\HasManyDistricts;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyProvinces;
 use Kevinpurwito\LaravelCountry\Relationships\HasManyWards;
 
+/**
+ * Kevinpurwito\LaravelCountry\Models\Country
+ * @property-read int $id
+ * @property string $code
+ * @property string $iso2
+ * @property string $iso3
+ * @property string $name
+ * @property bool $popular
+ * @property int $ordinal
+ * @property-read mixed $created_at
+ * @property-read mixed $updated_at
+ */
 class Country extends Model
 {
     use HasFactory;

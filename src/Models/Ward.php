@@ -8,6 +8,19 @@ use Kevinpurwito\LaravelCountry\Relationships\BelongsToCountry;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToDistrict;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToProvince;
 
+/**
+ * Kevinpurwito\LaravelCountry\Models\Ward
+ * @property-read int $id
+ * @property int $country_id
+ * @property int $province_id
+ * @property int $city_id
+ * @property int $district_id
+ * @property ?string $code
+ * @property string $name
+ * @property int $ordinal
+ * @property-read mixed $created_at
+ * @property-read mixed $updated_at
+ */
 class Ward extends Model
 {
     use BelongsToCountry;
