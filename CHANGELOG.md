@@ -5,9 +5,14 @@ All notable changes to `laravel-country` will be documented in this file
 ## TODO
 - Wards seeder from [wikipedia](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
 
+## 2.0.3 - 2022-05-24
+### Changed
+- Optimize performance for provinces & cities seeders using Laravel Query Builder instead of Eloquent
+
+
 ## 2.0.2 - 2022-05-23
 ### Added
-- PHPDoc for each Models, including @property for each attributes & @property-read for each relationship
+- PHPDoc for each Model, including @property for each attributes & @property-read for each relationship
 
 
 ## 2.0.1 - 2021-11-15

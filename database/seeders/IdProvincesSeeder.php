@@ -3,6 +3,7 @@
 namespace Kevinpurwito\LaravelCountry\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Kevinpurwito\LaravelCountry\Models\Country;
 
@@ -17,46 +18,51 @@ class IdProvincesSeeder extends Seeder
 
         $country = Country::findByIso3('IDN'); // Indonesia
 
-        $country->createProvince('ID-AC', 'Aceh', '11');
-        $country->createProvince('ID-SU', 'Sumatra Utara', '12');
-        $country->createProvince('ID-SB', 'Sumatra Barat', '13');
-        $country->createProvince('ID-RI', 'Riau', '14');
-        $country->createProvince('ID-JA', 'Jambi', '15');
-        $country->createProvince('ID-SS', 'Sumatra Selatan', '16');
-        $country->createProvince('ID-BE', 'Bengkulu', '17');
-        $country->createProvince('ID-LA', 'Lampung', '18');
-        $country->createProvince('ID-BB', 'Kep. Bangka Belitung', '19');
-        $country->createProvince('ID-KR', 'Kep. Riau', '21');
+        $uniqueBy = ['country_id', 'iso2'];
+        $values = [];
 
-        $country->createProvince('ID-JK', 'DKI Jakarta', '31');
-        $country->createProvince('ID-JB', 'Jawa Barat', '32');
-        $country->createProvince('ID-JT', 'Jawa Tengah', '33');
-        $country->createProvince('ID-YO', 'DI Yogyakarta', '34');
-        $country->createProvince('ID-JI', 'Jawa Timur', '35');
-        $country->createProvince('ID-BT', 'Banten', '36');
+        $values[] = ['iso2' => 'ID-AC', 'name' => 'Aceh', 'code' => '11', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-SU', 'name' => 'Sumatra Utara', 'code' => '12', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-SB', 'name' => 'Sumatra Barat', 'code' => '13', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-RI', 'name' => 'Riau', 'code' => '14', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-JA', 'name' => 'Jambi', 'code' => '15', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-SS', 'name' => 'Sumatra Selatan', 'code' => '16', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-BE', 'name' => 'Bengkulu', 'code' => '17', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-LA', 'name' => 'Lampung', 'code' => '18', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-BB', 'name' => 'Kep. Bangka Belitung', 'code' => '19', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-KR', 'name' => 'Kep. Riau', 'code' => '21', 'country_id' => $country->id];
 
-        $country->createProvince('ID-BA', 'Bali', '51');
-        $country->createProvince('ID-NB', 'Nusa Tenggara Barat', '52');
-        $country->createProvince('ID-NT', 'Nusa Tenggara Timur', '53');
+        $values[] = ['iso2' => 'ID-JK', 'name' => 'DKI Jakarta', 'code' => '31', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-JB', 'name' => 'Jawa Barat', 'code' => '32', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-JT', 'name' => 'Jawa Tengah', 'code' => '33', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-YO', 'name' => 'DI Yogyakarta', 'code' => '34', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-JI', 'name' => 'Jawa Timur', 'code' => '35', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-BT', 'name' => 'Banten', 'code' => '36', 'country_id' => $country->id];
 
-        $country->createProvince('ID-KB', 'Kalimantan Barat', '61');
-        $country->createProvince('ID-KT', 'Kalimantan Tengah', '62');
-        $country->createProvince('ID-KS', 'Kalimantan Selatan', '63');
-        $country->createProvince('ID-KI', 'Kalimantan Timur', '64');
-        $country->createProvince('ID-KU', 'Kalimantan Utara', '65');
+        $values[] = ['iso2' => 'ID-BA', 'name' => 'Bali', 'code' => '51', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-NB', 'name' => 'Nusa Tenggara Barat', 'code' => '52', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-NT', 'name' => 'Nusa Tenggara Timur', 'code' => '53', 'country_id' => $country->id];
 
-        $country->createProvince('ID-SA', 'Sulawesi Utara', '71');
-        $country->createProvince('ID-ST', 'Sulawesi Tengah', '72');
-        $country->createProvince('ID-SN', 'Sulawesi Selatan', '73');
-        $country->createProvince('ID-SG', 'Sulawesi Tenggara', '74');
-        $country->createProvince('ID-GO', 'Gorontalo', '75');
-        $country->createProvince('ID-SR', 'Sulawesi Barat', '76');
+        $values[] = ['iso2' => 'ID-KB', 'name' => 'Kalimantan Barat', 'code' => '61', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-KT', 'name' => 'Kalimantan Tengah', 'code' => '62', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-KS', 'name' => 'Kalimantan Selatan', 'code' => '63', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-KI', 'name' => 'Kalimantan Timur', 'code' => '64', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-KU', 'name' => 'Kalimantan Utara', 'code' => '65', 'country_id' => $country->id];
 
-        $country->createProvince('ID-MA', 'Maluku', '81');
-        $country->createProvince('ID-MU', 'Maluku Utara', '82');
+        $values[] = ['iso2' => 'ID-SA', 'name' => 'Sulawesi Utara', 'code' => '71', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-ST', 'name' => 'Sulawesi Tengah', 'code' => '72', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-SN', 'name' => 'Sulawesi Selatan', 'code' => '73', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-SG', 'name' => 'Sulawesi Tenggara', 'code' => '74', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-GO', 'name' => 'Gorontalo', 'code' => '75', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-SR', 'name' => 'Sulawesi Barat', 'code' => '76', 'country_id' => $country->id];
 
-        $country->createProvince('ID-PA', 'Papua', '91');
-        $country->createProvince('ID-PB', 'Papua Barat', '92');
+        $values[] = ['iso2' => 'ID-MA', 'name' => 'Maluku', 'code' => '81', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-MU', 'name' => 'Maluku Utara', 'code' => '82', 'country_id' => $country->id];
+
+        $values[] = ['iso2' => 'ID-PA', 'name' => 'Papua', 'code' => '91', 'country_id' => $country->id];
+        $values[] = ['iso2' => 'ID-PB', 'name' => 'Papua Barat', 'code' => '92', 'country_id' => $country->id];
+
+        DB::table($provinceTable)->upsert($values, $uniqueBy);
 
         return true;
     }
