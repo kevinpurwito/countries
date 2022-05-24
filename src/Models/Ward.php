@@ -3,7 +3,6 @@
 namespace Kevinpurwito\LaravelCountry\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToCity;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToCountry;
 use Kevinpurwito\LaravelCountry\Relationships\BelongsToDistrict;
