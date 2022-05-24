@@ -18,7 +18,7 @@ class IdProvincesSeeder extends Seeder
 
         $country = Country::findByIso3('IDN'); // Indonesia
 
-        $uniqueBy = ['country_id', 'iso2'];
+        $uniqueBy = ['iso2'];
         $values = [];
 
         $values[] = ['iso2' => 'ID-AC', 'name' => 'Aceh', 'code' => '11', 'country_id' => $country->id];

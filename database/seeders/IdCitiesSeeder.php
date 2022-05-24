@@ -25,7 +25,7 @@ class IdCitiesSeeder extends Seeder
         /** @var Country $country */
         $country = Country::with(['provinces'])->whereIso3('IDN')->first(); // Indonesia
 
-        $uniqueBy = ['province_id', 'code'];
+        $uniqueBy = ['country_id', 'province_id', 'code'];
         $values = [];
 
         /** @var Province $province */
