@@ -5,8 +5,9 @@ All notable changes to `laravel-country` will be documented in this file
 ## TODO
 - Wards seeder from [wikipedia](https://id.wikipedia.org/wiki/Daftar_kecamatan_dan_kelurahan_di_Indonesia)
 
-## 2.0.3 - 2022-05-24
+## 3.0.0. - 2022-05-24
 ### Changed
+- Set minimum PHP version to 8.0
 - Optimize performance for provinces & cities seeders using Laravel Query Builder instead of Eloquent
 
 

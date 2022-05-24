@@ -12,7 +12,8 @@
         <directory name="database/seeders"/>
         <ignoreFiles>
             <directory name="vendor"/>
+            <file name="database/seeders/IdDistrictsSeeder.php"/>
             <file name="src/CountryServiceProvider.php"/>
         </ignoreFiles>
     </projectFiles>
-</psalm>
+<plugins><pluginClass class="Psalm\LaravelPlugin\Plugin"/></plugins></psalm>

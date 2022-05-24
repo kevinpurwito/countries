@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Kevinpurwito\LaravelCountry\Models\Country;
-use Kevinpurwito\LaravelCountry\Models\Province;
 
 class IdCitiesSeeder extends Seeder
 {
@@ -26,9 +25,8 @@ class IdCitiesSeeder extends Seeder
         $country = Country::with(['provinces'])->whereIso3('IDN')->first(); // Indonesia
 
         $uniqueBy = ['country_id', 'province_id', 'code'];
-        $values = [];
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '11');
         $values[] = ['code' => '11.05', 'name' => 'Kab. Aceh Barat', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '11.12', 'name' => 'Kab. Aceh Barat Daya', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -53,8 +51,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '11.73', 'name' => 'Kota Lhokseumawe', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '11.72', 'name' => 'Kota Sabang', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '11.75', 'name' => 'Kota Subulussalam', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '12');
         $values[] = ['code' => '12.09', 'name' => 'Kab. Asahan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '12.19', 'name' => 'Kab. Batu Bara', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -89,8 +88,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '12.73', 'name' => 'Kota Sibolga', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '12.74', 'name' => 'Kota Tanjung Balai', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '12.76', 'name' => 'Kota Tebing Tinggi', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '13');
         $values[] = ['code' => '13.06', 'name' => 'Kab. Agam', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '13.10', 'name' => 'Kab. Dharmasraya', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -111,8 +111,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '13.76', 'name' => 'Kota Payakumbuh', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '13.73', 'name' => 'Kota Sawahlunto', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '13.72', 'name' => 'Kota Solok', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '17');
         $values[] = ['code' => '17.01', 'name' => 'Kab. Bengkulu Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '17.09', 'name' => 'Kab. Bengkulu Tengah', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -124,8 +125,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '17.02', 'name' => 'Kab. Rejang Lebong', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '17.05', 'name' => 'Kab. Seluma', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '17.71', 'name' => 'Kota Bengkulu', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '14');
         $values[] = ['code' => '14.03', 'name' => 'Kab. Bengkalis', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '14.04', 'name' => 'Kab. Indragiri Hilir', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -139,8 +141,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '14.08', 'name' => 'Kab. Siak', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '14.72', 'name' => 'Kota Dumai', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '14.71', 'name' => 'Kota Pekanbaru', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '21');
         $values[] = ['code' => '21.01', 'name' => 'Kab. Bintan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '21.02', 'name' => 'Kab. Karimun', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -149,8 +152,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '21.03', 'name' => 'Kab. Natuna', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '21.71', 'name' => 'Kota Batam', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '21.72', 'name' => 'Kota Tanjung Pinang', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '15');
         $values[] = ['code' => '15.04', 'name' => 'Kab. Batang Hari', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '15.08', 'name' => 'Kab. Bungo', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -163,8 +167,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '15.09', 'name' => 'Kab. Tebo', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '15.71', 'name' => 'Kota Jambi', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '15.72', 'name' => 'Kota Sungai Penuh', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '16');
         $values[] = ['code' => '16.07', 'name' => 'Kab. Banyuasin', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '16.11', 'name' => 'Kab. Empat Lawang', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -183,8 +188,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '16.72', 'name' => 'Kota Pagar Alam', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '16.71', 'name' => 'Kota Palembang', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '16.74', 'name' => 'Kota Prabumulih', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '18');
         $values[] = ['code' => '18.04', 'name' => 'Kab. Lampung Barat', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '18.01', 'name' => 'Kab. Lampung Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -201,8 +207,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '18.08', 'name' => 'Kab. Way Kanan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '18.71', 'name' => 'Kota Bandar Lampung', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '18.72', 'name' => 'Kota Metro', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '19');
         $values[] = ['code' => '19.01', 'name' => 'Kab. Bangka', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '19.05', 'name' => 'Kab. Bangka Barat', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -211,8 +218,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '19.02', 'name' => 'Kab. Belitung', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '19.06', 'name' => 'Kab. Belitung Timur', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '19.71', 'name' => 'Kota Pangkal Pinang', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '31');
         $values[] = ['code' => '31.01', 'name' => 'Kab. Kepulauan Seribu', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '31.73', 'name' => 'Kota Jakarta Barat', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -220,8 +228,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '31.74', 'name' => 'Kota Jakarta Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '31.75', 'name' => 'Kota Jakarta Timur', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '31.72', 'name' => 'Kota Jakarta Utara', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '32');
         $values[] = ['code' => '32.04', 'name' => 'Kab. Bandung', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '32.17', 'name' => 'Kab. Bandung Barat', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -250,8 +259,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '32.76', 'name' => 'Kota Depok', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '32.72', 'name' => 'Kota Sukabumi', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '32.78', 'name' => 'Kota Tasikmalaya', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '36');
         $values[] = ['code' => '36.02', 'name' => 'Kab. Lebak', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '36.01', 'name' => 'Kab. Pandeglang', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -261,8 +271,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '36.72', 'name' => 'Kota Cilegon', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '36.73', 'name' => 'Kota Serang', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '36.74', 'name' => 'Kota Tangerang Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '33');
         $values[] = ['code' => '33.04', 'name' => 'Kab. Banjarnegara', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '33.02', 'name' => 'Kab. Banyumas', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -299,16 +310,18 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '33.73', 'name' => 'Kota Salatiga', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '33.74', 'name' => 'Kota Semarang', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '33.76', 'name' => 'Kota Tegal', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '34');
         $values[] = ['code' => '34.02', 'name' => 'Kab. Bantul', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '34.03', 'name' => 'Kab. Gunung Kidul', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '34.01', 'name' => 'Kab. Kulon Progo', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '34.04', 'name' => 'Kab. Sleman', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '34.71', 'name' => 'Kota Yogyakarta', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '35');
         $values[] = ['code' => '35.26', 'name' => 'Kab. Bangkalan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '35.10', 'name' => 'Kab. Banyuwangi', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -348,8 +361,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '35.75', 'name' => 'Kota Pasuruan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '35.74', 'name' => 'Kota Probolinggo', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '35.78', 'name' => 'Kota Surabaya', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '61');
         $values[] = ['code' => '61.07', 'name' => 'Kab. Bengkayang', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '61.06', 'name' => 'Kab. Kapuas Hulu', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -365,8 +379,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '61.05', 'name' => 'Kab. Sintang', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '61.71', 'name' => 'Kota Pontianak', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '61.72', 'name' => 'Kota Singkawang', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '63');
         $values[] = ['code' => '63.11', 'name' => 'Kab. Balangan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '63.03', 'name' => 'Kab. Banjar', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -381,8 +396,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '63.05', 'name' => 'Kab. Tapin', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '63.72', 'name' => 'Kota Banjarbaru', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '63.71', 'name' => 'Kota Banjarmasin', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '64');
         $values[] = ['code' => '64.03', 'name' => 'Kab. Berau', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '64.07', 'name' => 'Kab. Kutai Barat', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -394,8 +410,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '64.71', 'name' => 'Kota Balikpapan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '64.74', 'name' => 'Kota Bontang', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '64.72', 'name' => 'Kota Samarinda', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '62');
         $values[] = ['code' => '62.04', 'name' => 'Kab. Barito Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '62.13', 'name' => 'Kab. Barito Timur', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -411,16 +428,18 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '62.07', 'name' => 'Kab. Seruyan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '62.08', 'name' => 'Kab. Sukamara', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '62.71', 'name' => 'Kota Palangka Raya', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '65');
         $values[] = ['code' => '65.01', 'name' => 'Kab. Bulungan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '65.02', 'name' => 'Kab. Malinau', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '65.03', 'name' => 'Kab. Nunukan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '65.04', 'name' => 'Kab. Tana Tidung', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '65.71', 'name' => 'Kota Tarakan', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '51');
         $values[] = ['code' => '51.03', 'name' => 'Kab. Badung', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '51.06', 'name' => 'Kab. Bangli', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -431,8 +450,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '51.05', 'name' => 'Kab. Klungkung', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '51.02', 'name' => 'Kab. Tabanan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '51.71', 'name' => 'Kota Denpasar', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '52');
         $values[] = ['code' => '52.06', 'name' => 'Kab. Bima', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '52.05', 'name' => 'Kab. Dompu', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -444,8 +464,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '52.07', 'name' => 'Kab. Sumbawa Barat', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '52.72', 'name' => 'Kota Bima', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '52.71', 'name' => 'Kota Mataram', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '53');
         $values[] = ['code' => '53.05', 'name' => 'Kab. Alor', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '53.04', 'name' => 'Kab. Belu', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -469,8 +490,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '53.02', 'name' => 'Kab. Timor Tengah Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '53.03', 'name' => 'Kab. Timor Tengah Utara', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '53.71', 'name' => 'Kota Kupang', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '76');
         $values[] = ['code' => '76.02', 'name' => 'Kab. Mamuju', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '76.01', 'name' => 'Kab. Pasangkayu', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -478,8 +500,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '76.03', 'name' => 'Kab. Mamasa', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '76.05', 'name' => 'Kab. Majene', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '76.06', 'name' => 'Kab. Mamuju Tengah', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '73');
         $values[] = ['code' => '73.03', 'name' => 'Kab. Bantaeng', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '73.11', 'name' => 'Kab. Barru', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -505,8 +528,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '73.71', 'name' => 'Kota Makassar', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '73.73', 'name' => 'Kota Palopo', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '73.72', 'name' => 'Kota Parepare', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '72');
         $values[] = ['code' => '72.01', 'name' => 'Kab. Banggai', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '72.07', 'name' => 'Kab. Banggai Kepulauan', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -521,8 +545,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '72.09', 'name' => 'Kab. Tojo Una-Una', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '72.04', 'name' => 'Kab. Tolitoli', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '72.71', 'name' => 'Kota Palu', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '74');
         $values[] = ['code' => '74.01', 'name' => 'Kab. Kolaka', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '74.02', 'name' => 'Kab. Konawe', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -541,8 +566,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '74.15', 'name' => 'Kab. Buton Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '74.71', 'name' => 'Kota Kendari', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '74.72', 'name' => 'Kota Baubau', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '71');
         $values[] = ['code' => '71.01', 'name' => 'Kab. Bolaang Mongondow', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '71.02', 'name' => 'Kab. Minahasa', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -559,8 +585,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '71.72', 'name' => 'Kota Bitung', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '71.73', 'name' => 'Kota Tomohon', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '71.74', 'name' => 'Kota Kotamobagu', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '75');
         $values[] = ['code' => '75.02', 'name' => 'Kab. Boalemo', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '75.03', 'name' => 'Kab. Bone Bolango', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -568,8 +595,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '75.05', 'name' => 'Kab. Gorontalo Utara', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '75.04', 'name' => 'Kab. Pohuwato', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '75.71', 'name' => 'Kota Gorontalo', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '81');
         $values[] = ['code' => '81.04', 'name' => 'Kab. Buru', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '81.09', 'name' => 'Kab. Buru Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -582,8 +610,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '81.05', 'name' => 'Kab. Seram Bagian Timur', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '81.71', 'name' => 'Kota Ambon', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '81.72', 'name' => 'Kota Tual', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '82');
         $values[] = ['code' => '82.01', 'name' => 'Kab. Halmahera Barat', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '82.04', 'name' => 'Kab. Halmahera Selatan', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -595,8 +624,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '82.08', 'name' => 'Kab. Pulau Taliabu', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '82.71', 'name' => 'Kota Ternate', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '82.72', 'name' => 'Kota Tidore Kepulauan', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '91');
         $values[] = ['code' => '91.18', 'name' => 'Kab. Asmat', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '91.06', 'name' => 'Kab. Biak Numfor', 'country_id' => $country->id, 'province_id' => $province->id];
@@ -627,8 +657,9 @@ class IdCitiesSeeder extends Seeder
         $values[] = ['code' => '91.13', 'name' => 'Kab. Yahukimo', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '91.22', 'name' => 'Kab. Yalimo', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '91.71', 'name' => 'Kota Jayapura', 'country_id' => $country->id, 'province_id' => $province->id];
+        DB::table($cityTable)->upsert($values, $uniqueBy);
 
-        /** @var Province $province */
+        $values = [];
         $province = $country->provinces->firstWhere('code', '92');
         $values[] = ['code' => '92.03', 'name' => 'Kab. Fakfak', 'country_id' => $country->id, 'province_id' => $province->id];
         $values[] = ['code' => '92.08', 'name' => 'Kab. Kaimana', 'country_id' => $country->id, 'province_id' => $province->id];
