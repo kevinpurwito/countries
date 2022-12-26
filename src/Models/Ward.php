@@ -41,9 +41,9 @@ class Ward extends Model
 
     public function scopeDefault($query)
     {
-        return $query->when(config('kp_country.ordinal_column'), function ($query) {
-            return $query->orderBy('ordinal');
-        })->orderBy('name');
+        return $query
+            ->when(config('kp_country.ordinal_column'), fn($query) => $query->orderBy('ordinal'))
+            ->orderBy('name');
     }
 
     public function setOrdinal(int $ordinal)

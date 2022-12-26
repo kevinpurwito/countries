@@ -44,11 +44,10 @@ class Country extends Model
 
     public function scopeDefault($query)
     {
-        return $query->when(config('kp_country.popular_column'), function ($query) {
-            return $query->orderByDesc('popular');
-        })->when(config('kp_country.ordinal_column'), function ($query) {
-            return $query->orderBy('ordinal');
-        })->orderBy('name');
+        return $query
+            ->when(config('kp_country.popular_column'), fn($query) => $query->orderByDesc('popular'))
+            ->when(config('kp_country.ordinal_column'), fn($query) => $query->orderBy('ordinal'))
+            ->orderBy('name');
     }
 
     public static function findByName(string $name): self
@@ -81,7 +80,7 @@ class Country extends Model
         return Province::updateOrCreate(['iso2' => $iso2], ['country_id' => $this->id, 'name' => $name, 'code' => $code ?? $iso2]);
     }
 
-    protected static function newFactory()
+    protected static function newFactory(): CountryFactory
     {
         return CountryFactory::new();
     }
