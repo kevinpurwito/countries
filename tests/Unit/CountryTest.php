@@ -11,7 +11,7 @@ class CountryTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         (new CountriesSeeder)->run();
@@ -40,7 +40,7 @@ class CountryTest extends TestCase
         if (config('kp_country.popular_column')) {
             $country = Country::findByName('Indonesia');
             $this->assertTrue($country->popular == 0);
-            $country->popular = 1;
+            $country->setPopular(1);
             $this->assertTrue($country->popular == 1);
         }
     }
@@ -51,7 +51,7 @@ class CountryTest extends TestCase
         if (config('kp_country.ordinal_column')) {
             $country = Country::findByName('Indonesia');
             $this->assertTrue($country->ordinal == 999);
-            $country->ordinal = 1;
+            $country->setOrdinal(1);
             $this->assertTrue($country->ordinal == 1);
         }
     }

@@ -14,7 +14,7 @@ use Kevinpurwito\LaravelCountry\Tests\TestCase;
 
 class IndonesiaTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         (new CountriesSeeder())->run();
