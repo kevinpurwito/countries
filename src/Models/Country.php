@@ -65,12 +65,12 @@ class Country extends Model
         return self::whereIso3($iso3)->first();
     }
 
-    public function setPopular(bool $isPopular)
+    public function setPopular(bool $isPopular): void
     {
         $this->update(['popular' => $isPopular]);
     }
 
-    public function setOrdinal(int $ordinal)
+    public function setOrdinal(int $ordinal): void
     {
         $this->update(['ordinal' => $ordinal]);
     }

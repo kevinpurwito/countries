@@ -46,7 +46,7 @@ class Province extends Model
             ->orderBy('name');
     }
 
-    public function setOrdinal(int $ordinal)
+    public function setOrdinal(int $ordinal): void
     {
         $this->update(['ordinal' => $ordinal]);
     }

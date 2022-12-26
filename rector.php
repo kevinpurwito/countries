@@ -23,6 +23,11 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_82,
         SetList::CODE_QUALITY,
+        SetList::PHP_80,
+        SetList::PHP_81,
+        SetList::PHP_82,
+        SetList::PSR_4,
+        SetList::TYPE_DECLARATION,
     ]);
 
     $rectorConfig->skip([
