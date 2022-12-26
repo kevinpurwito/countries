@@ -45,8 +45,8 @@ class Country extends Model
     public function scopeDefault($query)
     {
         return $query
-            ->when(config('kp_country.popular_column'), fn($query) => $query->orderByDesc('popular'))
-            ->when(config('kp_country.ordinal_column'), fn($query) => $query->orderBy('ordinal'))
+            ->when(config('kp_country.popular_column'), fn ($query) => $query->orderByDesc('popular'))
+            ->when(config('kp_country.ordinal_column'), fn ($query) => $query->orderBy('ordinal'))
             ->orderBy('name');
     }
 
