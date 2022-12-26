@@ -19,7 +19,7 @@ class CountryServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->offerPublishing();
 
@@ -29,7 +29,7 @@ class CountryServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__ . '/../config/kp_country.php', 'kp_country');

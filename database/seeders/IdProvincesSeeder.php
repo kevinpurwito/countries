@@ -9,7 +9,7 @@ use Kevinpurwito\LaravelCountry\Models\Country;
 
 class IdProvincesSeeder extends Seeder
 {
-    public function run()
+    public function run(): bool
     {
         $provinceTable = config('kp_country.table_names.province', 'provinces');
         if (! Schema::hasTable($provinceTable)) {

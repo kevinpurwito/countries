@@ -14,7 +14,7 @@ use Kevinpurwito\LaravelCountry\Tests\TestCase;
 
 class IndonesiaTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         (new CountriesSeeder())->run();
@@ -23,7 +23,7 @@ class IndonesiaTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_provinces()
+    public function it_has_many_provinces(): void
     {
         $country = Country::findByIso3('IDN'); // Indonesia
         $provinceCount = $country->provinces()->count();
@@ -34,7 +34,7 @@ class IndonesiaTest extends TestCase
     }
 
     /** @test */
-    public function it_has_many_cities()
+    public function it_has_many_cities(): void
     {
         $country = Country::findByIso3('IDN'); // Indonesia
         $cityCount = $country->cities()->count();
@@ -48,7 +48,7 @@ class IndonesiaTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_country()
+    public function it_belongs_to_country(): void
     {
         $province = Province::first();
         $this->assertTrue($province->country instanceof Country);
@@ -58,14 +58,14 @@ class IndonesiaTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_province()
+    public function it_belongs_to_province(): void
     {
         $city = City::first();
         $this->assertTrue($city->province instanceof Province);
     }
 
     /** @test */
-    public function it_has_districts()
+    public function it_has_districts(): void
     {
         (new IdDistrictsSeeder())->run();
 

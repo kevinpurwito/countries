@@ -11,21 +11,21 @@ class CountryTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         (new CountriesSeeder)->run();
     }
 
     /** @test */
-    public function it_has_countries()
+    public function it_has_countries(): void
     {
         $count = Country::count();
         $this->assertTrue($count == 240);
     }
 
     /** @test */
-    public function it_has_indonesia()
+    public function it_has_indonesia(): void
     {
         $country = Country::findByName('Indonesia');
         $this->assertTrue($country->name == 'Indonesia');
@@ -35,29 +35,29 @@ class CountryTest extends TestCase
     }
 
     /** @test */
-    public function it_has_popular_column()
+    public function it_has_popular_column(): void
     {
         if (config('kp_country.popular_column')) {
             $country = Country::findByName('Indonesia');
             $this->assertTrue($country->popular == 0);
-            $country->popular = 1;
+            $country->setPopular(1);
             $this->assertTrue($country->popular == 1);
         }
     }
 
     /** @test */
-    public function it_has_ordinal_column()
+    public function it_has_ordinal_column(): void
     {
         if (config('kp_country.ordinal_column')) {
             $country = Country::findByName('Indonesia');
             $this->assertTrue($country->ordinal == 999);
-            $country->ordinal = 1;
+            $country->setOrdinal(1);
             $this->assertTrue($country->ordinal == 1);
         }
     }
 
     /** @test */
-    public function it_shows_by_popular_column()
+    public function it_shows_by_popular_column(): void
     {
         if (config('kp_country.popular_column')) {
             Country::whereName('Indonesia')->update(['popular' => 1]);
@@ -69,7 +69,7 @@ class CountryTest extends TestCase
     }
 
     /** @test */
-    public function it_shows_by_ordinal_column()
+    public function it_shows_by_ordinal_column(): void
     {
         if (config('kp_country.ordinal_column')) {
             Country::whereName('Indonesia')->update(['ordinal' => 1]);
@@ -81,7 +81,7 @@ class CountryTest extends TestCase
     }
 
     /** @test */
-    public function it_shows_by_name()
+    public function it_shows_by_name(): void
     {
         $countries = Country::whereIn('name', ['Indonesia', 'Canada'])->default()->limit(2)->get();
         $this->assertTrue($countries[0]->name == 'Canada');
